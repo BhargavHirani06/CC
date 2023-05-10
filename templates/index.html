@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Speech to Text and Text to Speech Converter</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: linear-gradient(to right, #43cea2, #185a9d);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        color:black;
+        margin-bottom: 1rem;
+      }
+      form {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+      label,
+      select,
+      input,
+      button {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      label {
+        color: #333;
+        font-weight: bold;
+      }
+      button {
+        background-color: #185a9d;
+        color: #fff;
+        border: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      button:hover {
+        background-color: #0e4167;
+      }
+      #output {
+        margin-top: 2rem;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      id="converter-form"
+      class="animate__animated animate__fadeIn"
+      method="POST"
+    >
+      <h1>
+        Speech to Text and Text to Speech Converter
+      </h1>
+      <label for="conversion-type" class="animate__animated animate__fadeInLeft">Select conversion type:</label>
+      <select id="conversion-type" name="conversion-type" class="animate__animated animate__fadeInLeft">
+        <option value="speech-to-text">Speech to Text</option>
+        <option value="text-to-speech">Text to Speech</option>
+      </select>
+      <div id="conversion-input" class="animate__animated animate__fadeInLeft">
+        <label for="input-file">Upload file:</label>
+        <input type="file" id="input-file" name="input-file" />
+      </div>
+      <button type="submit" class="animate__animated animate__fadeInRight">Convert</button>
+    </form>
+    <div id="output" class="animate__animated"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
+
