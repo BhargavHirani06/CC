@@ -2,14 +2,13 @@ import os
 import tempfile
 import requests
 import speech_recognition as sr
-import pyttsx3
 from flask import Flask, render_template, request, send_file, jsonify
 from pathlib import Path
+from gtts import gTTS
 
 app = Flask(__name__)
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.config["TEMPLATES_AUTO_RELOAD"] = True 
 
-engine = pyttsx3.init()
 r = sr.Recognizer()
 
 @app.route("/")
@@ -40,8 +39,9 @@ def speech_to_text():
 def text_to_speech():
     text_file = request.files["file"]
     text = text_file.read().decode('utf-8')
-    engine.save_to_file(text, "output.mp3")
-    engine.runAndWait()
+
+    tts = gTTS(text=text, lang='en')
+    tts.save("output.mp3")
 
     audio_temp_file = tempfile.NamedTemporaryFile(suffix=".mp3", delete=False)
     with open("output.mp3", "rb") as f:
@@ -52,6 +52,3 @@ def text_to_speech():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
