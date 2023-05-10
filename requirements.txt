@@ -1,4 +1,3 @@
-tempfile
 requests
 speech_recognition
 pyttsx3
