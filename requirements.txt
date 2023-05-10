@@ -1,0 +1,6 @@
+tempfile
+requests
+speech_recognition
+pyttsx3
+flask 
+pathlib 
